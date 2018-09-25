@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Archery.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,7 +23,7 @@ namespace Archery.Controllers
         {
             var modelInfo = new Info
             {
-                DevName = "Vincent",
+                DevName = "Thierry",
                 ContactMail = "123@gmail.com",
                 CreateDate = DateTime.Now,
            };
