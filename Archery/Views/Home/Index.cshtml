@@ -3,7 +3,11 @@
     // ici il s'agit d'une propriété
     // Une vue est donc une class, ici elle herite de la class "View" et à pour propriété Layout
     // Touts les codes non gérés par Razor devront être affichés en faisant un un ConsolWriteLine("html.html"...à la place du meta name dans le Head) impossible a maintenir comme code
-    Layout = null;
+   
+    //Layout = null;
+
+    // Un Layout ...d'executer une View dans un Layout
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
