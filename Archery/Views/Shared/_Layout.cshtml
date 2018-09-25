@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>_Layout</title>
+    <title>@ViewBag.Title Archery </title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
@@ -27,14 +27,34 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Brand</a>
+
+                @*lien du lien souhaité maniere 1 avec un href *@
+                @*<a class="navbar-brand" href="#">Home</a>*@
+
+                @*lien du lien souhaité maniere 2 avec un Html Helper *@
+                @*Pour la notation du code d'utilisation de class css dans le c# il faut toujours utiliser un "@"*@
+                @*@Html.ActionLink("Accueil", "index", "home", null, new { @class = "navbar-brand" })*@
+
+                @*lien du lien souhaité maniere 3 avec un Url Helper*@
+                <a class="navbar-brand" href="@Url.Action("index", "home")"> Home </a>
+
+
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Link</a></li>
+                    <li>
+                        @*mode 1 href*@
+                        @*<a href="~/a-propos"> A propos </a>*@
+
+                        @*mode 2 avec HtmlLink*@
+                        @*@Html.ActionLink("A propos", "about", "home")*@
+
+                        @*mode 3 avec UrlLink*@
+                        <a href="@Url.RouteUrl("AboutRoute")"> A propos </a> 
+                    </li>
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -74,7 +94,7 @@
     @*<!-container du RenderBody-->*@
     <div class="container">
 
-        @RenderBody();
+        @RenderBody()
 
     </div>
 
