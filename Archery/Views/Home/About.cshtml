@@ -1,0 +1,33 @@
+﻿    @*// Toujours mettre cette class et son objet en premiere ligne*@
+@model Archery.Models.Info
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>About</title>
+</head>
+<body>
+
+    <div>
+        @*// Stockage de données = Model
+        // indique prio site / pax a contacter / nom de l'hebergeur
+        // Pour stock les info, il faudra passer via un Models
+        *@
+        <h1> A propos de : </h1>
+
+
+        @*//Model.DevName, doit être inscrit en majuscule. Model recupère les données du parametre de l'objet DevName *@
+        <p> Dev : @Model.DevName</p>
+        <p> &copy; @Model.CreateDate</p>
+        <p> Contact : @Model.Contact</p>
+
+    </div>
+
+</body>
+</html>
