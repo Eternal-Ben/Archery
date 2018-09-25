@@ -9,8 +9,8 @@ namespace Archery.Models
     {
         // Le mapping de type va être fait par le conroller, donc il faut creer une dans notre controlleur Home pour se cas
         public string DevName { get; set; }
-        public string CreateDate { get; set; }
-        public string Contact { get; set; }
+        public DateTime CreateDate { get; set; }
+        public string ContactMail { get; set; }
 
     }
 }
