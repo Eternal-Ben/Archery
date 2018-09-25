@@ -13,11 +13,16 @@ namespace Archery.Controllers
         // Appel la methode public qui renvoi un objet de type ActionResult
         public ActionResult Index()
         {
+            //ViewBag & ViewData à voir : echanger des donnees dans le cicle d'execution
+            ViewData["Title"] = "Accueil";
+
             // retourne la parametre View de la méthode Index qui a été instancié par la methode ActionResult (confirmer la syntax)
             // Viewresult est la class enfant de la methode ActionResult ; notion d'heritage
             return View();
         }
 
+        // On indique le chemin de la route par une propriété ci dessous
+        //[Route("a-propros")]
         // Vue about : pour la creation de la View... About donc...
         public  ActionResult About()
         {
@@ -25,7 +30,7 @@ namespace Archery.Controllers
             {
                 DevName = "Thierry",
                 ContactMail = "123@gmail.com",
-                CreateDate = DateTime.Now,
+                CreateDate = DateTime.Today,
            };
             // Pour retourner la valeur de la variable modelInfo instancié par l'objet View
             return View(modelInfo);
