@@ -14,7 +14,7 @@ namespace Archery.Controllers
         public ActionResult Index()
         {
             //ViewBag & ViewData à voir : echanger des donnees dans le cicle d'execution
-            ViewData["Title"] = "Accueil";
+            ViewData["Title"] = "Accueil"; // peut charger des objets, mais attention uniquement des objets simple.
 
             // retourne la parametre View de la méthode Index qui a été instancié par la methode ActionResult (confirmer la syntax)
             // Viewresult est la class enfant de la methode ActionResult ; notion d'heritage
@@ -26,7 +26,10 @@ namespace Archery.Controllers
         // Vue about : pour la creation de la View... About donc...
         public  ActionResult About()
         {
+            // permet le titrage de la page web dynamiquement
+            ViewData["Title"] = "About";
             var modelInfo = new Info
+
             {
                 DevName = "Thierry",
                 ContactMail = "123@gmail.com",
