@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Archery.Controllers
-{   // Instancie une class pour permettre l'heritage de class, il ne s'agit pas d'une interface, sinon il y aurait un HomeController : IController...
+{   // Appel une class pour permettre l'heritage de class, il ne s'agit pas d'une interface, sinon il y aurait un HomeController : IController...
     public class HomeController : Controller
     {
         // GET: Home
