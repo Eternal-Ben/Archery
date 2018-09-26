@@ -18,7 +18,7 @@ namespace Archery.Controllers
         // Le parametre [HttpPost] permet une recuperation du flux de donnée
         [HttpPost]
         // On accede à la methode de la class xx grace au parametre "email" passé en argument à l'objet Subscribe qui a un modificateur d'acces public, donc visible par les methodes enfants et ses class parents
-        public ActionResult Subscibe(Archer archer)
+        public ActionResult Subscrsibe(Archer archer)
         {
             // On test si la valeur est valide
             if (ModelState.IsValid)
