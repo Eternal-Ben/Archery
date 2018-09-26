@@ -26,7 +26,7 @@ namespace Archery.Controllers
         // Vue about : pour la creation de la View... About donc...
         public  ActionResult About()
         {
-            // permet le titrage de la page web dynamiquement
+            // permet le titrage de la page web dynamiquement | dispo dans le control et les Views qui seront apl | dispo le temps d'execution du cycle partout. identique a une autre variable qui elle n'est pas dynamique mais dans le dictionnaire | passer des donnees au control ou aux vues le temps d'execution propre au controleur
             ViewData["Title"] = "About";
             var modelInfo = new Info
 
