@@ -21,16 +21,21 @@ namespace Archery.Controllers
         public ActionResult Subscrsibe(Archer archer)
         {
             // On test si la valeur est valide
+            if (DateTime.Now.AddYears(-9) <= archer.BirthDate)
+            {
+                //Technique simple et rapide :
+                //ViewBag.Erreur = "Age non requis";
+                //return View();
+                ModelState.AddModelError("Birthday","Date de naissance",)
+            }
+
             if (ModelState.IsValid)
 
-            { // prhase du philo 
-                //int AgeLimit = 9;
+            {
+              //int AgeLimit = 9;
               //                   ArcherLimitDate = 
-                //if (AgeLimit - archer.BirthDate > 9)
-                {
-                    //acces ok
-                }
-                    // return acces ok
+              // if (AgeLimit - archer.BirthDate > 9)
+               // return acces ok
                 //Qhand qlq chose n'existe pas il faut le creer'
                 //DateTime.Birthdate is true | A travailler
             }
