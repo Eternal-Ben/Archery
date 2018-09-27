@@ -1,4 +1,5 @@
-﻿using Archery.Models;
+﻿using Archery.Data;
+using Archery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,9 @@ using System.Web.Mvc;
 namespace Archery.Controllers
 {
     public class ArchersController : Controller
-    {
+    { 
+        // A faire absolument : override le dispo pour libere la connection a la base pour eviter les fuites sql
+        private ArcheryDbContext db = new ArcheryDbContext();
         // GET: Players
         public ActionResult Subscribe()
         {
@@ -32,15 +35,20 @@ namespace Archery.Controllers
             if (ModelState.IsValid)
 
             {
-              //int AgeLimit = 9;
-              //                   ArcherLimitDate = 
-              // if (AgeLimit - archer.BirthDate > 9)
-              // return acces ok
-              // Qand qlq chose n'existe pas il faut le creer
-              // DateTime.Birthdate is true | A travailler
+                db.Archers.Add(archer);
+                db.SaveChanges();
+                // Exemple 1 pour renvoie sur la page Index/Home
+                //return RedirectToAction("index", "home");
             }
+            
             return View();
+        }
 
+        protected override void Dispose(bool disposing) // l.13 pour eviter l'empilement des donner et saturer la connection
+        {
+            base.Dispose(disposing);
+            if (!disposing)
+                this.db.Dispose();
         }
     }
 }
