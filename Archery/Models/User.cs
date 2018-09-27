@@ -49,8 +49,9 @@ namespace Archery.Models
         [DataType(DataType.Date)]
         [Required]// Attribut requis donc Required
         //[CustomValidation(DateTime, avec creeation d'une class en statique...')]
-        [Age(9,ErrorMessage = "Pour le champ {0}, vous devez avoir plus de {} ans")]
-        public DateTime ? BirthDate { get; set; } // ? = nullable, permet de valider le IsValid pour la bd (<?)
+        //[nom d'un attribut]
+        [Age(9, MaximumAge = 90, ErrorMessage = "Pour le champ {0}, vous devez avoir plus de {1} ans")] // Class utilisé sous forme d'attribut. propritée de l'objet Age de la class Age
+        public DateTime ? BirthDate { get; set; } // ? = nullable, l'objet peut etre à null (<?)
     }
  
 }
