@@ -15,7 +15,7 @@ namespace Archery.Controllers
             return View();
         }
 
-        // Le parametre [HttpPost] permet une recuperation du flux de donnée
+        // Le parametre [HttpPost] permet une recuperation du flux de donnée du Post
         [HttpPost]
         // On accede à la methode de la class xx grace au parametre "email" passé en argument à l'objet Subscribe qui a un modificateur d'acces public, donc visible par les methodes enfants et ses class parents
         public ActionResult Subscrsibe(Archer archer)
@@ -23,7 +23,14 @@ namespace Archery.Controllers
             // On test si la valeur est valide
             if (ModelState.IsValid)
 
-            { // prhase du philo
+            { // prhase du philo 
+                //int AgeLimit = 9;
+              //                   ArcherLimitDate = 
+                //if (AgeLimit - archer.BirthDate > 9)
+                {
+                    //acces ok
+                }
+                    // return acces ok
                 //Qhand qlq chose n'existe pas il faut le creer'
                 //DateTime.Birthdate is true | A travailler
             }

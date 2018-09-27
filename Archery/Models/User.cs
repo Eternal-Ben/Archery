@@ -47,7 +47,7 @@ namespace Archery.Models
         //Parametre Date : Afin de ne recuperer uniquement la date | apport des elements au model grace aux helpers
         [DataType(DataType.Date)]
         [Required]// Attribut requis donc Required
-        public DateTime ? BirthDate { get; set; } // ? = nullable, permet de valider le IsValid
+        public DateTime ? BirthDate { get; set; } // ? = nullable, permet de valider le IsValid pour la bd (<?)
     }
  
 }
