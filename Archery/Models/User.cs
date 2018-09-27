@@ -1,5 +1,6 @@
 ﻿// Etude sur les parametres
 
+using Archery.Views.Validator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -48,7 +49,7 @@ namespace Archery.Models
         [DataType(DataType.Date)]
         [Required]// Attribut requis donc Required
         //[CustomValidation(DateTime, avec creeation d'une class en statique...')]
-
+        [Age(9,ErrorMessage = "Pour le champ {0}, vous devez avoir plus de {} ans")]
         public DateTime ? BirthDate { get; set; } // ? = nullable, permet de valider le IsValid pour la bd (<?)
     }
  
