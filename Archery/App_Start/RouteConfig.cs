@@ -9,13 +9,14 @@ using System.Web.Routing;
 
 namespace Archery
 {
-    // Precise la route pour nos controllers
+    // Precise la route pour nos controllers depuis la class RouteConfig
     public class RouteConfig
     {   
         public static void RegisterRoutes(RouteCollection routes)
-        {
+        {   // Ingorer les routes stocké dans la collection de route, RouteCollection
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            // Pour utiliser un controller, il faut declarer la route du MVC
+
+            // Pour utiliser un controller, il faut declarer la route du MVC ci dessous
             routes.MapMvcAttributeRoutes(); // Remplacement de l'attribut dans le model de class
 
             // routes.MapRoute(
@@ -24,7 +25,7 @@ namespace Archery
             //   defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             //);*/
 
-// Mappage, Reecriture d'url, redirection de page Home>About
+            // Mappage, Reecriture d'url, redirection de page Home>About
             routes.MapRoute(
                 name:"AboutRoute",
                 url: "a-propos",

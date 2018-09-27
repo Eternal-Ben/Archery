@@ -6,14 +6,16 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Archery.Controllers
-{   // Appel une class pour permettre l'heritage de class, il ne s'agit pas d'une interface, sinon il y aurait un HomeController : IController...
+{   // "nom de notre classe qui ": > herite" d'une class mère Controller, il ne s'agit pas d'une interface, sinon il y aurait un HomeController : IController...
     public class HomeController : Controller
     {
         // GET: Home
-        // Appel la methode public qui renvoi un objet de type ActionResult
+        // Appel le resulat de la methode Index qui est de type ActionResult qui est en acces public
         public ActionResult Index()
         {
-            //ViewBag & ViewData à voir : echanger des donnees dans le cicle d'execution
+            // ViewBag (dynamique) : Recupère le dictionnaire de données d'affichage de facon dynamique.et va garantir l'echange des donnees durant le cicle d'execution de la View (<?).
+            // ViewData (non-dynamique)  : Recupère ou définit le dictionnaire pour les données d'affichage durant le cycle d'execution de la View.
+
             ViewData["Title"] = "Accueil"; // peut charger des objets, mais attention uniquement des objets simple.
 
             // retourne la parametre View de la méthode Index qui a été instancié par la methode ActionResult (confirmer la syntax)
@@ -28,7 +30,7 @@ namespace Archery.Controllers
         {
             // permet le titrage de la page web dynamiquement | dispo dans le control et les Views qui seront apl | dispo le temps d'execution du cycle partout. identique a une autre variable qui elle n'est pas dynamique mais dans le dictionnaire | passer des donnees au control ou aux vues le temps d'execution propre au controleur
             ViewData["Title"] = "About";
-            var modelInfo = new Info
+            var modelInfo = new Info //creation de l'objet Info
 
             {
                 DevName = "Thierry",
