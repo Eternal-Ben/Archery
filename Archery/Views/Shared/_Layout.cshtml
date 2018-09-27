@@ -52,7 +52,7 @@
                         @*@Html.ActionLink("A propos", "about", "home")*@
 
                         @*mode 3 avec UrlLink*@
-                        <a href="@Url.RouteUrl("AboutRoute")"> A propos </a> 
+                        <a href="@Url.RouteUrl("AboutRoute")"> A propos </a>
                     </li>
 
                     <li class="dropdown">
@@ -76,7 +76,7 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                    <a href="@Url.Action("subscribe", "archers")"> Inscription </a>
+                        <a href="@Url.Action("subscribe", "archers")"> Inscription </a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -102,11 +102,13 @@
 
     <footer class="panel-footer">
         &copy; 2018
-        
+
     </footer>
 
 
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script> @*// à mettre avant le non unobstruse apres ce script pour le fonctionnement du script ci dessous qui est lié à ce script : permet une validation coté client > econnomie d'appel coté server*@
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script> @*// à mettre avant le non unobstruse : permet une validation coté client > economie d'appel cote server*@
 </body>
 </html>
