@@ -1,10 +1,13 @@
 ﻿@*On type la Vue pour la recup, c'est à dire Binder al Vue/View*@
 @model Archery.Models.Archer
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Inscription";
 }
 
-<h2> Nouveau archer </h2>
+@{ 
+    <h2> Nouveau archer </h2>
+}
 
 @*<form role="form" method="post">*@
 @using (Html.BeginForm())
@@ -15,46 +18,47 @@
         @*<input type="email" name="email" class="form-control" id="exampleInputEmail" placeholder="Enter email">*@
         @Html.LabelFor(x => x.LastName, new { @class = "control-label" })
         @Html.EditorFor(x => x.LastName, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(x => x.BirthDate, null, new {@class = "control-label"})
+        @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
     </div>
 
 
     <div>
         @Html.LabelFor(x => x.FirstName, new { @class = "control-label" })
         @Html.EditorFor(x => x.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(x => x.FirstName, null, new { @class = "control-label" })
+        @Html.ValidationMessageFor(x => x.FirstName, null, new { @class = "text-danger" })
     </div>
 
-    <div class="form-group">
+    <div>
         @Html.LabelFor(x => x.Mail, new { @class = "control-label" }) @*// permet de recuperer le nom de la propriété*@
         @Html.EditorFor(x => x.Mail, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(x => x.Mail, null, new { @class = "control-label" })
+        @Html.ValidationMessageFor(x => x.Mail, null, new { @class = "text-danger" })
 
     </div>
 
     <div>
         @Html.LabelFor(x => x.Password, new { @class = "control-label" })
         @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(x => x.Password, null, new { @class = "control-label" })
+        @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
 
     </div>
 
     <div>
         @Html.LabelFor(x => x.BirthDate, new { @class = "control-label" })
         @Html.EditorFor(x => x.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(x => x.BirthDate, null, new { @class = "control-label" })
+        @Html.ValidationMessageFor(x => x.BirthDate, null, new { @class = "text-danger" })
 
     </div>
 
     <div>
         @Html.LabelFor(x => x.LicenseNumber, new { @class = "control-label" })
         @Html.EditorFor(x => x.LicenseNumber, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(x => x.LicenseNumber, null, new { @class = "control-label" })
+        @Html.ValidationMessageFor(x => x.LicenseNumber, null, new { @class = "text-danger" })
 
     </div>
 
-    <button type="submit" class="btn btn-default"> Ok </button>
-
+    <div>
+        <button type="submit" class="btn btn-default"> Ok </button>
+    </div>
 
 </div>
 }
