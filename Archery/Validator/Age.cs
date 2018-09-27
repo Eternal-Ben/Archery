@@ -26,8 +26,7 @@ namespace Archery.Views.Validator
 
         public override bool IsValid(object value)
         {
-            if (value is DateTime);
-
+            if (value != null)
             {
                 if (value is DateTime)
                 {
@@ -38,8 +37,9 @@ namespace Archery.Views.Validator
                             && ((DateTime)value).AddYears(this.MaximumAge) >= DateTime.Now;
                 }
                 else
-                throw new ArgumentException("Le type doit être un DateTime"); // retour message error
+                    throw new ArgumentException("Le type doit être un DateTime"); // retour message error
             }
+            return true;
         }
 
         public override string FormatErrorMessage(string name)

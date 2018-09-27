@@ -24,19 +24,20 @@ namespace Archery.Controllers
         public ActionResult Subscribe(Archer archer)
         {
             // On test si la valeur est valide
-            if (DateTime.Now.AddYears(-9) <= archer.BirthDate)
-            {
+           /* if (DateTime.Now.AddYears(-9) <= archer.BirthDate)
+       
                 //Technique simple et rapide :
                 //ViewBag.Erreur = "Age non requis";
                 //return View();
                 ModelState.AddModelError("Birthday", "Date de naissance");
-            }
+            }*/
 
             if (ModelState.IsValid)
 
             {
                 db.Archers.Add(archer);
                 db.SaveChanges();
+
                 // Exemple 1 pour renvoie sur la page Index/Home
                 //return RedirectToAction("index", "home");
             }
