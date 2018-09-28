@@ -39,7 +39,8 @@ namespace Archery.Controllers
                 db.SaveChanges();
 
                 // Exemple 1 pour renvoie sur la page Index/Home
-                //return RedirectToAction("index", "home");
+                TempData["Message"] = "Arché Enregistré";
+                return RedirectToAction("index", "home");
             }
             
             return View();

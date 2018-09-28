@@ -1,13 +1,14 @@
 ﻿@*On type la Vue pour la recup, c'est à dire Binder al Vue/View*@
 @model Archery.Models.Archer
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
     ViewBag.Title = "Inscription";
 }
 
-@{ 
-    <h2> Nouveau archer </h2>
+@section SectionTitle{
+<h2> Nouvel archer </h2>
 }
+
 
 @*<form role="form" method="post">*@
 @using (Html.BeginForm())
