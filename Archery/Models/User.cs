@@ -4,6 +4,7 @@ using Archery.Views.Validator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -31,6 +32,7 @@ namespace Archery.Models
         [StringLength(150)]
         public string Password { get; set; }
 
+        [NotMapped]
         [Display(Name = "Confirmation du mot de passe")]
         [DataType(DataType.Password)]
         //[Compare(]

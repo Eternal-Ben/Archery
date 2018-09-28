@@ -35,7 +35,6 @@ namespace Archery.Controllers
             }*/
 
             if (ModelState.IsValid)
-
             {
                 db.Archers.Add(archer);
                 db.SaveChanges();
