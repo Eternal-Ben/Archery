@@ -13,7 +13,7 @@ namespace Archery.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201809271512125_Init"; }
+            get { return "201809280716059_Init"; }
         }
         
         string IMigrationMetadata.Source
