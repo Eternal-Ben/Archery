@@ -11,7 +11,6 @@ namespace Archery.Controllers
     public class ArchersController : Controller
     { 
         // A faire absolument : override le dispo pour libere la connection a la base pour eviter les fuites sql
-        private ArcheryDbContext db = new ArcheryDbContext();
         // GET: Players
         public ActionResult Subscribe()
         {
@@ -46,11 +45,5 @@ namespace Archery.Controllers
             return View();
         }
 
-        protected override void Dispose(bool disposing) // l.13 pour eviter l'empilement des donner et saturer la connection
-        {
-            base.Dispose(disposing);
-            if (!disposing)
-                this.db.Dispose();
-        }
     }
 }
