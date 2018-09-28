@@ -1,0 +1,22 @@
+﻿@*Le fochier cshtml Layout peut être nommé indifferament mais toujours avec "_"*@
+@using Archery.Tools;
+
+@{
+    var message = TempData["MESSAGE"] as Message;
+}
+
+
+@*@if (!string.IsNullOrWhiteSpace(TempData["Message"] as string))*@
+
+@if (message != null)
+{
+
+    @*<div class="alert alert-success"> @ViewBag.Message </div>*@
+    // De preference un tempData pour la redirection des pages sans info personnel
+    <div class="alert
+                 alert-@(message.MessageType == Archery.Tools.MessageType.SUCCESS? "succes" : "danger")">
+        @* @TempData["Message"]*@
+        @message.Text
+    </div>
+
+}
