@@ -7,7 +7,7 @@ namespace Archery.Models
 {
     //public sealed class Administrator : SEALED > Fin de l'heritage, celle l'heritage du parent | confirmer la definition
 
-    public class Administrator : Archer
+    public class Administrator : User
     {
     }
 }
