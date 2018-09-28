@@ -7,6 +7,7 @@ namespace Archery.Migrations
     {
         public override void Up()
         {
+            RenameTable(name: "dbo.Archers", newName: "Administrators");
             CreateTable(
                 "dbo.Archers",
                 c => new
@@ -19,15 +20,19 @@ namespace Archery.Migrations
                         LastName = c.String(nullable: false),
                         FirstName = c.String(nullable: false),
                         BirthDate = c.DateTime(nullable: false),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.ID);
             
+            DropColumn("dbo.Administrators", "LicenseNumber");
+            DropColumn("dbo.Administrators", "Discriminator");
         }
         
         public override void Down()
         {
+            AddColumn("dbo.Administrators", "Discriminator", c => c.String(nullable: false, maxLength: 128));
+            AddColumn("dbo.Administrators", "LicenseNumber", c => c.String());
             DropTable("dbo.Archers");
+            RenameTable(name: "dbo.Administrators", newName: "Archers");
         }
     }
 }
