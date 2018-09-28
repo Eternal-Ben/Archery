@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Archery.Controllers
 {   // "nom de notre classe qui ": > herite" d'une class mère Controller, il ne s'agit pas d'une interface, sinon il y aurait un HomeController : IController...
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: Home
         // Appel le resulat de la methode Index qui est de type ActionResult qui est en acces public
