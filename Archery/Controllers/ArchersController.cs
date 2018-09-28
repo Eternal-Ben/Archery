@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Archery.Controllers
 {
-    public class ArchersController : Controller
+    public class ArchersController : BaseController
     { 
         // A faire absolument : override le dispo pour libere la connection a la base pour eviter les fuites sql
         // GET: Players
@@ -38,10 +38,11 @@ namespace Archery.Controllers
 
             {
                 db.Archers.Add(archer);
-                //db.SaveChanges();
+                db.SaveChanges();
 
                 // Exemple 1 pour renvoie sur la page Index/Home
-                TempData["Message"] = "Arché Enregistré";
+                //TempData["Message"] = "Arché Enregistré";
+                Display("Archer enregistré");
                 return RedirectToAction("index", "home");
             }
             
