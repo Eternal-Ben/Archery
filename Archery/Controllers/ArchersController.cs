@@ -35,7 +35,8 @@ namespace Archery.Controllers
             }*/
 
             if (ModelState.IsValid)
-            {
+
+                CreateMD5(archer);
                 db.Archers.Add(archer);
                 db.SaveChanges();
 
