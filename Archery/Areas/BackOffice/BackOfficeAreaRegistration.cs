@@ -17,7 +17,7 @@ namespace Archery.Areas.BackOffice
             context.MapRoute(
                 "BackOffice_default",
                 "BackOffice/{controller}/{action}/{id}",
-                new { action = "DashBoard", id = UrlParameter.Optional } // eviter les memes nom dans plusieurs aera
+                new { controller = "DashBoard", action = "Index", id = UrlParameter.Optional } // eviter les memes nom dans plusieurs aera
             );
         }
     }
