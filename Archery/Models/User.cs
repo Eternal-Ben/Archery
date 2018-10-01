@@ -1,5 +1,6 @@
 ﻿// Etude sur les parametres
 
+using Archery.Tools;
 using Archery.Views.Validator;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ namespace Archery.Models
                            @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
                            @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
             , ErrorMessage = "Le format n'est pas bon.")]
+        [Index(IsUnique = true)]
+        [Email(ErrorMessage = "Mail déjà existant, veuillez en donner un nouveau mail pour votre enregistrement")]
         public string Mail { get; set; }
 
         // Utilisation du HtmlHelper pour recup les info dans tout les formulaires en du MDP avec le DataType(Datatype.Password)

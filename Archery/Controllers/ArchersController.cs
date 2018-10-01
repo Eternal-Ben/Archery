@@ -6,6 +6,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Security.Cryptography;
+using Archery.Tools;
 
 namespace Archery.Controllers
 {
@@ -26,28 +28,37 @@ namespace Archery.Controllers
         public ActionResult Subscribe([Bind(Exclude = "ID")]Archer archer) // Bind(Exclude = "nom du parametre de l'objet" à exclure | Bind(Include.... - il s'agit d'une protection suplementaire entre l'association et l'objet d'une formulaire
         {
             // On test si la valeur est valide
-           /* if (DateTime.Now.AddYears(-9) <= archer.BirthDate)
-       
-                //Technique simple et rapide :
-                //ViewBag.Erreur = "Age non requis";
-                //return View();
-                ModelState.AddModelError("Birthday", "Date de naissance");
-            }*/
+            /* if (DateTime.Now.AddYears(-9) <= archer.BirthDate)
+
+                 //Technique simple et rapide :
+                 //ViewBag.Erreur = "Age non requis";
+                 //return View();
+                 ModelState.AddModelError("Birthday", "Date de naissance");
+             }*/
 
             if (ModelState.IsValid)
+            {
 
-                CreateMD5(archer);
+                //archer.Password = Extension.HashMD5(archer.Password);
+                //ci dessous permet de faire une extension avec HashMD5 avec this en parametre de la methode static
+                archer.Password = archer.Password.HashMD5();
+
+                //demande au dbcontext de desactiver la validation à l'enregistrement
+                db.Configuration.ValidateOnSaveEnabled = false;
                 db.Archers.Add(archer);
                 db.SaveChanges();
 
+
+                db.Configuration.ValidateOnSaveEnabled = true;
                 // Exemple 1 pour renvoie sur la page Index/Home
                 //TempData["Message"] = "Arché Enregistré";
                 Display("Archer enregistré");
                 return RedirectToAction("index", "home");
+
             }
-            
             return View();
         }
-
+            
     }
+
 }

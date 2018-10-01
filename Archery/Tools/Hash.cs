@@ -1,53 +1,83 @@
-﻿using Archery.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿//using Archery.Models;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Web;
+//using System.Web.Mvc;
+//using System.Security.Cryptography;
 
-namespace Archery.Tools
-{
-    public abstract class Hash : Controller
-    {
-        protected ArcheryDbContext db = new ArcheryDbContext();
+//namespace Archery.Tools
+//{
+//    public class Hash(string[] args)
+//    {
+//        string source = new value;
+//        using (MD5 md5Hash = MD5.Create())
+//        {
+//            string hash = GetMd5Hash(md5Hash, source);
 
-        /// <summary>
-        /// Affiche un message dans le Layout success ou ereur avec ou
-        /// </summary>
-        /// <param name="text">le text a afficher</param>
-        /// <param name="type">le type de message</param>
-        public void Display(string text, MessageType type = MessageType.SUCCESS)
-        {// les paramtres type et txt sont dans l'ordre dans le lequel il se presente dans la methode
-            var m = new Message(type, text);
-            TempData["MESSAGE"] = m;
-        }
+//            Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".");
 
-        public static string CreateMD5(string archer)
-        {
-            // Use input string to calculate MD5 hash
-            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
-            {
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
+//            Console.WriteLine("Verifying the hash...");
 
-                // Convert the byte array to hexadecimal string
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
-                {
-                    sb.Append(hashBytes[i].ToString("X2"));
-                }
-                return sb.ToString();
-            }
-        }
+//            if (VerifyMd5Hash(md5Hash, source, hash))
+//            {
+//                Console.WriteLine("The hashes are the same.");
+//            }
+//            else
+//            {
+//                Console.WriteLine("The hashes are not same.");
+//            }
+//        }
 
-        protected override void Dispose(bool disposing) // l.13 pour eviter l'empilement des donner et saturer la connection
-        {
-            base.Dispose(disposing);
-            if (!disposing)
-                this.db.Dispose();
-        }
 
-    }
-}       
-    }
-}
+
+//    }
+//    static string GetMd5Hash(MD5 md5Hash, string input)
+//    {
+
+//        // Convert the input string to a byte array and compute the hash.
+//        byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+//        // Create a new Stringbuilder to collect the bytes
+//        // and create a string.
+//        StringBuilder sBuilder = new StringBuilder();
+
+//        // Loop through each byte of the hashed data 
+//        // and format each one as a hexadecimal string.
+//        for (int i = 0; i < data.Length; i++)
+//        {
+//            sBuilder.Append(data[i].ToString("x2"));
+//        }
+
+//        // Return the hexadecimal string.
+//        return sBuilder.ToString();
+//    }
+
+//    // Verify a hash against a string.
+//    static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
+//    {
+//        // Hash the input.
+//        string hashOfInput = GetMd5Hash(md5Hash, input);
+
+//        // Create a StringComparer an compare the hashes.
+//        StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+//        if (0 == comparer.Compare(hashOfInput, hash))
+//        {
+//            return true;
+//        }
+//        else
+//        {
+//            return false;
+//        }
+//    }
+
+//}
+//}
+
+//// This code example produces the following output:
+////
+//// The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
+//// Verifying the hash...
+//// The hashes are the same.   
+//}
