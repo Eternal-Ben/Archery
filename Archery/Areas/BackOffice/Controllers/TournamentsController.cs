@@ -28,7 +28,7 @@ namespace Archery.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Find(id);
+            Tournament tournament = db.Tournaments.Include("Weapons").SingleOrDefault (SelectList<Weapon>ID); // à reprendre sur le git, puis faire la même chose pour la partie "edite"
             if (tournament == null)
             {
                 return HttpNotFound();
@@ -39,6 +39,8 @@ namespace Archery.Areas.BackOffice.Controllers
         // GET: BackOffice/Tournaments/Create
         public ActionResult Create()
         {
+            MultiSelectList weaponsValues = new MultiSelectList(db.Weapons, "ID", "Name");
+            ViewBag.Weapons = weaponsValues;
             return View();
         }
 
@@ -47,10 +49,15 @@ namespace Archery.Areas.BackOffice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,StartDate,EndDate,ArcherCount,Price,Description")] Tournament tournament)
+        public ActionResult Create([Bind(Include = "Name,StartDate,EndDate,ArcherCount,Price,Description")] Tournament tournament, int [] WeaponsID)
         {
             if (ModelState.IsValid)
             {
+                tournament.Weapons = new List<Weapon>();
+                foreach (var item in WeaponsID)
+                {
+                    tournament.Weapons.Add(db.Weapons.Find(item));
+                }
                 db.Tournaments.Add(tournament);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -61,7 +68,7 @@ namespace Archery.Areas.BackOffice.Controllers
 
         // GET: BackOffice/Tournaments/Edit/5
         public ActionResult Edit(int? id)
-        {
+        { // a completer pour l'edition
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
