@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Archery.Models
 {
@@ -13,11 +14,9 @@ namespace Archery.Models
         [StringLength(50)]
         public string Name { get; set; }
 
-        [Required]
         [Display(Name="Armes")]
         public ICollection <Weapon> Weapons {get;set;}
 
-        [Required]
         [Display(Name ="Tireur")]
         public ICollection <Shooter> Shooters { get; set; }
 
@@ -38,6 +37,7 @@ namespace Archery.Models
         public decimal? Price { get; set; }
 
         [Display(Name = "Description")]
+        [AllowHtml] // permet le passage des données en html, uniquement
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
     }
