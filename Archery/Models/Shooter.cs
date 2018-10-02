@@ -29,6 +29,7 @@ namespace Archery.Models
         [ForeignKey("ArcherId")]
         public Archer Archer { get; set; }
 
+        [Display(Name ="Départ")]
         public DateTime? Departure { get; set; }
     }
 }
