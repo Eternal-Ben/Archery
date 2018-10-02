@@ -22,7 +22,9 @@ namespace Archery.Tools
     public enum MessageType
     {
         SUCCESS,
-        ERROR
+        ERROR,
+        ALREADYUSE, // ajout de message type pour retour mail/mdp
+        RETRY
     }
 
 }
