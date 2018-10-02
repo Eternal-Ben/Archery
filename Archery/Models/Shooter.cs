@@ -20,14 +20,14 @@ namespace Archery.Models
         [Display(Name ="Arme")]
         public int WeaponID { get; set; }
 
-        [ForeignKey("WeaponId")]
+        [ForeignKey("WeaponID")]
         public Weapon Weapon { get; set; }
 
         [Required]
         [ForeignKey("Archer")]
         public  int ArcherID { get; set; }
 
-        [ForeignKey("ArcherId")]
+        [ForeignKey("ArcherID")]
         public Archer Archer { get; set; }
 
         [Display(Name ="Départ")]
