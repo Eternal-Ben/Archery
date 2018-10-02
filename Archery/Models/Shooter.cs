@@ -11,10 +11,10 @@ namespace Archery.Models
     {
         [Required]
         [Display(Name ="Tournoi")]
-        public int ChallengeID { get; set; }
+        public int TournamentID { get; set; }
 
-        [ForeignKey("ChallengeID")]
-        public Challenge Challenge  { get; set; }
+        [ForeignKey("TournamentID")]
+        public Tournament Tournament  { get; set; }
 
         [Required]
         [Display(Name ="Arme")]
@@ -23,6 +23,7 @@ namespace Archery.Models
         [ForeignKey("WeaponId")]
         public Weapon Weapon { get; set; }
 
+        [Required]
         [ForeignKey("Archer")]
         public  int ArcherID { get; set; }
 

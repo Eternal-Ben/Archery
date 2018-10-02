@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Archery.Models
 {
-    public class Challenge : BaseModel
+    public class Tournament : BaseModel
     {
         [Required]
         [Display(Name ="Nom")]

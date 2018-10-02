@@ -14,7 +14,7 @@ namespace Archery.Models
 
         // relation many to many donc une clé et on regarde dans la collection les types d'armes possible            
         [Display(Name = "Tournois")]
-        public ICollection<Challenge> Challenges { get; set; }
+        public ICollection<Tournament> Tournaments { get; set; }
     }
             
 }

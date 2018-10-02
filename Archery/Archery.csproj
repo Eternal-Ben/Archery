@@ -142,7 +142,7 @@
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Archer.cs" />
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\Challenge.cs" />
+    <Compile Include="Models\Tournament.cs" />
     <Compile Include="Models\Shooter.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Info.cs" />
