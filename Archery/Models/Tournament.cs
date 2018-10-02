@@ -36,5 +36,9 @@ namespace Archery.Models
 
         [Display(Name ="Prix")]
         public decimal? Price { get; set; }
+
+        [Display(Name = "Description")]
+        [DataType(DataType.MultilineText)]
+        public string Description { get; set; }
     }
 }

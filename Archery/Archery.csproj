@@ -158,6 +158,10 @@
     <Compile Include="Migrations\201810021044502_Init.Designer.cs">
       <DependentUpon>201810021044502_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810021053061_AddDescriptionAtTrounament.cs" />
+    <Compile Include="Migrations\201810021053061_AddDescriptionAtTrounament.Designer.cs">
+      <DependentUpon>201810021053061_AddDescriptionAtTrounament.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Archer.cs" />
@@ -199,6 +203,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810021044502_Init.resx">
       <DependentUpon>201810021044502_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810021053061_AddDescriptionAtTrounament.resx">
+      <DependentUpon>201810021053061_AddDescriptionAtTrounament.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
