@@ -73,14 +73,32 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
 @section SectionScripts{
 
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
     <script src="~/Scripts/jquery.datetimepicker.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+
     <script>
         $(function () {
-            $("#StartDate").datetimepicker();
-            $("#EndDate").datetimepicker();
+            $("#StartDate").datetimepicker({
+                lang: 'fr',
+                step: 15,
+                format: 'd/m/y H:i'
+            });
+
+
+            $("#EndDate").datetimepicker({
+                lang: 'fr',
+                step: 15,
+                format: 'd/m/y H:i'
+            });
+
+            tinymce.init({
+                selector: 'textarea',  // change this value according to your HTML
+                language: 'fr_FR'
+            });
+
         });
 
     </script>

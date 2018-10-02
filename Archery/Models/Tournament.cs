@@ -15,11 +15,11 @@ namespace Archery.Models
 
         [Required]
         [Display(Name="Armes")]
-        public ICollection <Weapon>Weapons {get;set;}
+        public ICollection <Weapon> Weapons {get;set;}
 
         [Required]
         [Display(Name ="Tireur")]
-        public ICollection <Shooter>Shooters { get; set; }
+        public ICollection <Shooter> Shooters { get; set; }
 
         [Required]
         [Display(Name="Début")]
