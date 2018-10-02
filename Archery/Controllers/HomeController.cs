@@ -35,7 +35,7 @@ namespace Archery.Controllers
             {
                 DevName = "Thierry",
                 ContactMail = "123@gmail.com",
-                CreateDate = DateTime.Today,
+                CreateDate = DateTime.UtcNow,
            };
             // Pour retourner la valeur de la variable modelInfo instancié par l'objet View
             return View(modelInfo);

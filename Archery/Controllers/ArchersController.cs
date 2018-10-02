@@ -53,9 +53,10 @@ namespace Archery.Controllers
                 // Exemple 1 pour renvoie sur la page Index/Home
                 //TempData["Message"] = "Arché Enregistré";
                 Display("Archer enregistré");
-                return RedirectToAction("index", "home");
 
+                return RedirectToAction("index", "home");
             }
+
             return View();
         }
             

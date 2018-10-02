@@ -19,7 +19,7 @@ namespace Archery.Models
 
         [Required]
         [Display(Name ="Tireur")]
-        public ICollection <Archer>Archers { get; set; }
+        public ICollection <Shooter>Shooters { get; set; }
 
         [Required]
         [Display(Name="Début")]
@@ -38,25 +38,3 @@ namespace Archery.Models
         public decimal? Price { get; set; }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-        [Display(Name = "Armes")]
-
-        public ICollection<Weapon> Weapons { get; set; }
-
-
-
-        [Display(Name = "Tireurs")]
-
-        public ICollection<Shooter> Shooters { get; set; }
-
-    }
