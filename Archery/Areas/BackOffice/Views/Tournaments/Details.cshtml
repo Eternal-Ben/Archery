@@ -54,9 +54,12 @@
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 
+        @*permet de passer en argument que le code html sans les balises*@
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.Raw(Model.Description)
         </dd>
+
+        @*<td></td> // à reprendre sur le git*@
 
     </dl>
 </div>
