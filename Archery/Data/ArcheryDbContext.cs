@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -11,7 +12,7 @@ namespace Archery.Data
     {
         public ArcheryDbContext() : base("Archery")
         {
-            this.Database.Log = Console.Write;
+            this.Database.Log = s => Debug.Write(s); // permet la sortie des etats de connections à la base Archery dans la fenetre Debug
         }
         public DbSet<Administrator> Administrators { get; set; }
         public DbSet<Archer> Archers { get; set; }
