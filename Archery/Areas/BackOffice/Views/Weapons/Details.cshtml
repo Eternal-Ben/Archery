@@ -18,6 +18,24 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
 
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+
+        <dt>
+            Armes
+        </dt>
+        <dd>
+            <table class="table table-striped">
+                @foreach (var item in Model.Weapons)
+                {
+                <tr><td>@item.Name</td></tr>
+                }
+            </table>
+        </dd>
+    </dl>
+
+
     </dl>
 </div>
 <p>
