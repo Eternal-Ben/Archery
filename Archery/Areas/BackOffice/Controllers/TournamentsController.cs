@@ -105,7 +105,6 @@ namespace Archery.Areas.BackOffice.Controllers
                     tournament.Weapons = db.Weapons.Where(x => weaponsID.Contains(weaponsID, id ); // reprendre la suite sur git hub
                 } else
                     tournament.Weapons.Clear();
-                    Console.WriteLine
 
                 db.SaveChanges();
                 return RedirectToAction("Index");

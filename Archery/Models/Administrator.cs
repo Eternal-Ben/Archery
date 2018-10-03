@@ -9,5 +9,6 @@ namespace Archery.Models
 
     public class Administrator : User
     {
+        // sachant qu'il y a un heritage sur le model User qui recupère deja ses attributs que l'on ne va pas reecrir, alors on cree un ViewModel
     }
 }

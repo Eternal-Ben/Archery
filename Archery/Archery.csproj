@@ -125,6 +125,7 @@
     <Content Include="Areas\BackOffice\Views\Tournaments\Details.cshtml" />
     <Content Include="Areas\BackOffice\Views\Tournaments\Edit.cshtml" />
     <Content Include="Areas\BackOffice\Views\Tournaments\Index.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Authentification\Login.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
@@ -301,9 +302,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\BackOffice\BackOfficeAreaRegistration.cs" />
+    <Compile Include="Areas\BackOffice\Controllers\AuthentificationController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\DashBoardController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\TournamentsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\WeaponsController.cs" />
+    <Compile Include="Areas\BackOffice\Models\AuthentificationViewModels.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ArchersController.cs" />
@@ -363,7 +366,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\BackOffice\Models\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810021044502_Init.resx">
