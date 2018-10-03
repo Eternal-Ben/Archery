@@ -6,10 +6,9 @@ using System.Web;
 
 namespace Archery.Areas.BackOffice.Models
 {
-    public class AuthentificationLoginViewModels
+    public class AuthentificationLoginViewModel
     {   
         [Display (Name="Login")]
-        [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Le champ {0} est obligatoire.")]
         public string Mail { get; set; }
 

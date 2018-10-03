@@ -28,7 +28,7 @@ namespace Archery.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Include("Weapons").SingleOrDefault (SelectList<Weapon>ID); // à reprendre sur le git, puis faire la même chose pour la partie "edite"
+            Tournament tournament = db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == id);
             if (tournament == null)
             {
                 return HttpNotFound();
@@ -49,42 +49,44 @@ namespace Archery.Areas.BackOffice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,StartDate,EndDate,ArcherCount,Price,Description")] Tournament tournament, int [] WeaponsID)
+        public ActionResult Create([Bind(Include = "Name,Location,StartDate,EndDate,ArcherCount,Price,Description")] Tournament tournament, int[] WeaponsID)
         {
             if (ModelState.IsValid)
             {
-                //tournament.Weapons = new List<Weapon>();
-                //foreach (var item in WeaponsID)
-                //{
-                //    tournament.Weapons.Add(db.Weapons.Find(item));
-                //}
-                if (WeaponsID.Count()>0)
-                    tournament XXXXXX
+                /*tournament.Weapons = new List<Weapon>();
+                foreach (var item in WeaponsID)
+                {
+                    tournament.Weapons.Add(db.Weapons.Find(item));
+                }*/
+                if (WeaponsID.Count() > 0)
+                    tournament.Weapons = db.Weapons.Where(x => WeaponsID.Contains(x.ID)).ToList();
+
                 db.Tournaments.Add(tournament);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            MultiSelectList weaponsValues = new MultiSelectList(db.Weapons, "ID", "Name");
+            ViewBag.Weapons = weaponsValues;
             return View(tournament);
         }
 
         // GET: BackOffice/Tournaments/Edit/5
         public ActionResult Edit(int? id)
-        { // a completer pour l'edition
+        {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            MultiSelectList weaponsValues = new MultiSelectList(db.Weapons, "ID", "Name");
-            ViewBag.Weapons = weaponsValues;
-            return View();
-
-            Tournament tournament = db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == id); // XXX
+            Tournament tournament = db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == id);
             if (tournament == null)
             {
                 return HttpNotFound();
             }
+
+            MultiSelectList weaponsValues = new MultiSelectList(db.Weapons, "ID", "Name", tournament.Weapons.Select(x => x.ID));
+            ViewBag.Weapons = weaponsValues;
             return View(tournament);
         }
 
@@ -93,27 +95,26 @@ namespace Archery.Areas.BackOffice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,StartDate,EndDate,ArcherCount,Price,Description")] Tournament tournament, int[] weaponsID)
+        public ActionResult Edit([Bind(Include = "ID,Name,Location,StartDate,EndDate,ArcherCount,Price,Description")] Tournament tournament, int[] weaponsID)
         {
+            db.Entry(tournament).State = EntityState.Modified;
+            db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == tournament.ID);
+
             if (ModelState.IsValid)
             {
-                db.Entry(tournament).State = EntityState.Modified;
-                db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == tournament.ID);
-
                 if (weaponsID != null)
-                {
-                    tournament.Weapons = db.Weapons.Where(x => weaponsID.Contains(weaponsID, id ); // reprendre la suite sur git hub
-                } else
+                    tournament.Weapons = db.Weapons.Where(x => weaponsID.Contains(x.ID)).ToList();
+                else
                     tournament.Weapons.Clear();
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            MultiSelectList weaponsValues = new MultiSelectList(db.Weapons, "ID", "Name", tournament,); // reprendre la suite sur git hub
+
+            MultiSelectList weaponsValues = new MultiSelectList(db.Weapons, "ID", "Name", tournament.Weapons.Select(x => x.ID));
             ViewBag.Weapons = weaponsValues;
             return View(tournament);
         }
-
 
         // GET: BackOffice/Tournaments/Delete/5
         public ActionResult Delete(int? id)
@@ -135,14 +136,18 @@ namespace Archery.Areas.BackOffice.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tournament tournament = db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == id);
+            Tournament tournament = db.Tournaments
+                .Include("Weapons").SingleOrDefault(x => x.ID == id);
             tournament.Weapons.Clear();
 
             var shooters = db.Shooters.Where(x => x.TournamentID == id);
             foreach (var item in shooters)
             {
                 db.Entry(item).State = EntityState.Deleted;
+                //db.Shooters.Remove(item);
             }
+
+            //db.Entry(tournament).State = EntityState.Deleted;
             db.Tournaments.Remove(tournament);
 
             db.SaveChanges();

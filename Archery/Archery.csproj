@@ -306,7 +306,7 @@
     <Compile Include="Areas\BackOffice\Controllers\DashBoardController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\TournamentsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\WeaponsController.cs" />
-    <Compile Include="Areas\BackOffice\Models\AuthentificationViewModels.cs" />
+    <Compile Include="Areas\BackOffice\Models\AuthentificationViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ArchersController.cs" />

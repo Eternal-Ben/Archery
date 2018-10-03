@@ -14,7 +14,7 @@ namespace Archery.Areas.BackOffice.Controllers
         // GET: BackOffice/Authentification
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(AuthentificationLoginViewModels model)// nom de la Vue retounné : ici la vue AthentificationLoginViewModels
+        public ActionResult Login(AuthentificationLoginViewModel model)// nom de la Vue retounné : ici la vue AthentificationLoginViewModels
         {
             if (ModelState.IsValid)
             {
