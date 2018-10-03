@@ -11,7 +11,7 @@ namespace Archery.Data
     {
         public ArcheryDbContext() : base("Archery")
         {
-
+            this.Database.Log = Console.Write;
         }
         public DbSet<Administrator> Administrators { get; set; }
         public DbSet<Archer> Archers { get; set; }
