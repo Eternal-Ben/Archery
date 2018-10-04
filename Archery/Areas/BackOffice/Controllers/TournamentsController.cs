@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -79,7 +80,7 @@ namespace Archery.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == id);
+            Tournament tournament = db.Tournaments.Include("Pictures").Include("Weapons").SingleOrDefault(x => x.ID == id); // permet de renvoyer les images et les weapons via le Include
             if (tournament == null)
             {
                 return HttpNotFound();
@@ -154,13 +155,35 @@ namespace Archery.Areas.BackOffice.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+        public ActionResult AddPicture (HttpPostedFileBase picture)
         {
-            if (disposing)
+            if(picture?.ContentLength > 0)
             {
-                db.Dispose();
+                var tp = new TournamentPicture();
+                tp.ContentType = picture.ContentType;
+                tp.Name = picture.FileName;
+                tp.TournamentID = id;
+
+                using (var reader = new BinaryReader(picture.InputStream))
+                {
+                    tp.Content = reader.ReadBytes(picture.ContentLength);
+                }
+
+                db.TournamentPictures.Add(tp);
+                db.SaveChanges();
+                return RedirectToAction("edit", "tournaments", new { id=id });
             }
-            base.Dispose(disposing);
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
         }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            db.Dispose();
+        }
+        base.Dispose(disposing);
+    }
     }
 }
