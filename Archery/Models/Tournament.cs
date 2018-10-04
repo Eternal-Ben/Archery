@@ -46,5 +46,9 @@ namespace Archery.Models
         [AllowHtml] // permet le passage des données en html, uniquement
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
+        [Display(Name = "Images")]
+        public ICollection<TournamentPicture> Pictures { get; set; }
+
     }
 }
