@@ -14,6 +14,12 @@ namespace Archery.Models
         [StringLength(50)]
         public string Name { get; set; }
 
+        [Required]
+        [Display(Name = "Lieu")]
+        [StringLength(250)]
+        [DataType(DataType.MultilineText)]
+        public string Location { get; set; }
+
         [Display(Name="Armes")]
         public ICollection <Weapon> Weapons {get;set;}
 

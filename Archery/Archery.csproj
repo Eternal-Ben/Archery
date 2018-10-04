@@ -327,6 +327,7 @@
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Archer.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\Tournament.cs" />
     <Compile Include="Models\Shooter.cs" />
     <Compile Include="Models\User.cs" />

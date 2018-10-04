@@ -18,9 +18,14 @@ namespace Archery.Controllers
 
             ViewData["Title"] = "Accueil"; // peut charger des objets, mais attention uniquement des objets simple.
 
+            HomeIndexViewModel model = new HomeIndexViewModel();
+            model.Tournaments = db.Tournaments.Where(x => x.StartDate >= DateTime.Now)
+                                              .OrderBy(x => x.StartDate)
+                                              .Take(20);
+
             // retourne la parametre View de la méthode Index qui a été instancié par la methode ActionResult (confirmer la syntax)
             // Viewresult est la class enfant de la methode ActionResult ; notion d'heritage
-            return View();
+            return View(20);
         }
 
         // On indique le chemin de la route par une propriété ci dessous
