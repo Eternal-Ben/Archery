@@ -99,7 +99,7 @@ namespace Archery.Areas.BackOffice.Controllers
         public ActionResult Edit([Bind(Include = "ID,Name,Location,StartDate,EndDate,ArcherCount,Price,Description")] Tournament tournament, int[] weaponsID)
         {
             db.Entry(tournament).State = EntityState.Modified;
-            db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == tournament.ID);
+            db.Tournaments.Include("Pictures").Include("Weapons").SingleOrDefault(x => x.ID == tournament.ID);
 
             if (ModelState.IsValid)
             {
@@ -155,7 +155,7 @@ namespace Archery.Areas.BackOffice.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult AddPicture (HttpPostedFileBase picture)
+        public ActionResult AddPicture (HttpPostedFileBase picture, int id)
         {
             if(picture?.ContentLength > 0)
             {
