@@ -1,33 +1,31 @@
 ﻿@model Archery.Models.HomeIndexViewModel
-
-@{ // indique qu'on utilise du code Razor
-    // ici il s'agit d'une propriété
-    // Une vue est donc une class, ici elle herite de la class "View" et à pour propriété Layout
-    // Touts les codes non gérés par Razor devront être affichés en faisant un un ConsolWriteLine("html.html"...à la place du meta name dans le Head) impossible a maintenir comme code
-
-    //Layout = null;
-
-    // Un Layout ...d'executer une View dans un Layout
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-
+@using Archery.Tools;
 
 <div class="row">
     @foreach (var item in Model.Tournaments)
     {
-
-
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="..." alt="...">
-                <div class="caption">
-                    <h3>@item.Name</h3>
-                    <p>@item.Location</p>
-                    <p>@item.StartDate.ToString("ddd dd MMM yyyy ")</p>
-                    <p><a href="#" class="btn btn-primary" role="button">S'inscrire</a></p>
-                </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            @if (item.Pictures?.Count() > 0)
+            {
+                @Html.PictureTournament(item.Pictures.First(), "img-circle")
+            }
+            <div class="caption">
+                <h3>@item.Name</h3>
+                <p>@item.Location</p>
+                <p>@item.StartDate.ToString("ddd dd MMM yyyy ")</p>
+                @*@if (item.Weapons != null)
+                {
+                <ul>
+                    @foreach (var weapon in item.Weapons)
+                    {
+                        <li>@weapon.Name</li>
+                    }
+                </ul>
+                }*@
+                <p>@*<a href="@Url.RouteUrl("DetailsTournament", new { id=item.ID, name = item.Name })" class="btn btn-primary" role="button">Voir les détails</a>*@ <a href="#" class="btn btn-primary" role="button">S'inscrire</a></p>
             </div>
         </div>
+    </div>
     }
 </div>

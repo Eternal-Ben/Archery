@@ -8,10 +8,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Archery.Data;
+using Archery.Filters;
 using Archery.Models;
 
 namespace Archery.Areas.BackOffice.Controllers
 {
+    [Authentification]
     public class TournamentsController : Controller
     {
         private ArcheryDbContext db = new ArcheryDbContext();
@@ -59,9 +61,9 @@ namespace Archery.Areas.BackOffice.Controllers
                 {
                     tournament.Weapons.Add(db.Weapons.Find(item));
                 }*/
-                if (WeaponsID.Count() > 0)
+                if(WeaponsID.Count() > 0)
                     tournament.Weapons = db.Weapons.Where(x => WeaponsID.Contains(x.ID)).ToList();
-
+                
                 db.Tournaments.Add(tournament);
 
                 db.SaveChanges();
@@ -80,7 +82,7 @@ namespace Archery.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Include("Pictures").Include("Weapons").SingleOrDefault(x => x.ID == id); // permet de renvoyer les images et les weapons via le Include
+            Tournament tournament = db.Tournaments.Include("Pictures").Include("Weapons").SingleOrDefault(x => x.ID == id);
             if (tournament == null)
             {
                 return HttpNotFound();
@@ -111,7 +113,7 @@ namespace Archery.Areas.BackOffice.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            
             MultiSelectList weaponsValues = new MultiSelectList(db.Weapons, "ID", "Name", tournament.Weapons.Select(x => x.ID));
             ViewBag.Weapons = weaponsValues;
             return View(tournament);
@@ -155,7 +157,8 @@ namespace Archery.Areas.BackOffice.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult AddPicture (HttpPostedFileBase picture, int id)
+        [HttpPost]
+        public ActionResult AddPicture(HttpPostedFileBase picture, int id)
         {
             if(picture?.ContentLength > 0)
             {
@@ -164,26 +167,42 @@ namespace Archery.Areas.BackOffice.Controllers
                 tp.Name = picture.FileName;
                 tp.TournamentID = id;
 
-                using (var reader = new BinaryReader(picture.InputStream))
+                using(var reader = new BinaryReader(picture.InputStream))
                 {
                     tp.Content = reader.ReadBytes(picture.ContentLength);
                 }
 
                 db.TournamentPictures.Add(tp);
                 db.SaveChanges();
-                return RedirectToAction("edit", "tournaments", new { id=id });
+
+                return RedirectToAction("edit", "tournaments", new { id = id });
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
         }
 
-    protected override void Dispose(bool disposing)
-    {
-        if (disposing)
+        [HttpPost]
+        public ActionResult DeletePicture(int? id)
         {
-            db.Dispose();
+            if (id == null)
+                return HttpNotFound();
+
+            var picture = db.TournamentPictures.Find(id);
+
+            if(picture == null)
+                return HttpNotFound();
+
+            db.TournamentPictures.Remove(picture);
+            db.SaveChanges();
+            return Json(picture);
         }
-        base.Dispose(disposing);
-    }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

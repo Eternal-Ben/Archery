@@ -14,7 +14,7 @@ namespace Archery.Controllers
         {
             ViewData["Title"] = "Accueil";
             HomeIndexViewModel model = new HomeIndexViewModel();
-            model.Tournaments = db.Tournaments.Include("Weapons")
+            model.Tournaments = db.Tournaments.Include("Pictures").Include("Weapons")
                                               .Where(x => x.StartDate >= DateTime.Now)
                                               .OrderBy(x => x.StartDate)
                                               .Take(20);
