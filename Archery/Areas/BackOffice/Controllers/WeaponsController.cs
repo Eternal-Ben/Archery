@@ -51,11 +51,15 @@ namespace Archery.Areas.BackOffice.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (db.Weapons.Any(NewOne => NewOne.Name.Equals(weapon.Name)))
+                {
+                    //TODO E.g. ModelState.AddModelError Like "Weapon allready existe, creat a over one"
+                    return HttpNotFound();
+                }
                 db.Weapons.Add(weapon);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(weapon);
         }
 
