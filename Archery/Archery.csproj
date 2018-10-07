@@ -333,6 +333,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\ArcheryHelpers.cs" />
     <Compile Include="Tools\DataTournament.cs" />
+    <Compile Include="Tools\DoobleControl.cs" />
     <Compile Include="Tools\EmailAttribute.cs" />
     <Compile Include="Tools\Message.cs" />
     <Compile Include="Tools\Extension.cs" />
